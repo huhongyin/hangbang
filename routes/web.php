@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/test', 'Web\AirController@index');
+
+Route::get('/add', 'Web\AirController@add');
