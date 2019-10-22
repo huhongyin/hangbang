@@ -59,8 +59,10 @@ class AirController extends Controller
 
 	public function index()
 	{
+	    $date = date("Y-m-d");
+
         $config = Config::first();
-        $startTime = strtotime($config->start_time);
+        $startTime = strtotime($date . ' ' .$config->start_time);
 		info('配置文件:'.print_r($config, true));
 		info('当前时间:'. date('Y-m-d H:i:s', time()));
         if($startTime > time()){
@@ -74,19 +76,19 @@ class AirController extends Controller
             //未启动,启动任务
             $config->is_start = 1;
             $config->save();
-            $this->shell();
+            $this->shell($date);
         }else{
         	info('更新其他');
             //判断是否有其他数据需要更新
-            if(Plan::where('status', 0)->count() > 0){
-                $this->shell();
+            if(Plan::where('status', 0)->where('flightDate', $date)->count() > 0){
+                $this->shell($date);
             }
         }
 	}
 
-	public function shell()
+	public function shell($date)
     {
-        $list = Plan::where('status', 0)->get();
+        $list = Plan::where('status', 0)->where('flightDate', $date)->get();
 
         if(!empty($list)){
             info('请求数据有:' . print_r($list, true));
