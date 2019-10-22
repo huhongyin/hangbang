@@ -59,10 +59,10 @@
                             </td>
                         </tr>
                     @endforeach
-                    {{ $list->links() }}
                 @endif
                 </tbody>
             </table>
+            <div id="paginate"></div>
         </div>
     </div>
 @endsection
@@ -96,4 +96,17 @@
 
         }
     </style>
+@endsection
+@section('js')
+    <script>
+        layui.use('laypage', function(){
+            var laypage = layui.laypage;
+
+            //执行一个laypage实例
+            laypage.render({
+                elem: 'paginate' //注意，这里的 test1 是 ID，不用加 # 号
+                ,count: {{ $list->total() }} //数据总数，从服务端得到
+            });
+        });
+    </script>
 @endsection
