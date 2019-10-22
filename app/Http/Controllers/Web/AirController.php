@@ -31,6 +31,25 @@ class AirController extends Controller
 		return view('air', compact('info'));
 	}
 
+	private function getCodeStrAndCookie()
+	{
+		$time = $this->msectime();
+		$url = $this->codeUrl . '?d=' . $time;
+
+		$res = $this->get($url);
+		$cookie = $res[0]['Set-Cookie'];
+		$res = $res[1];
+
+		$imgBase64 = 'data:image/jpeg;base64,' . base64_encode($res);
+
+		info('图片base:' . $imgBase64);
+
+		$res = $this->getCode($imgBase64);
+
+		info('ocr结果:' . print_r($res, true));
+		return [ $res['v_code'], $cookie]
+	}
+
 	public function doAdd(Request $request)
     {
         try {
@@ -39,7 +58,10 @@ class AirController extends Controller
             $data = $request->all();
             unset($data['_token']);
             $keys = ["userName", "idCard", "airways", "flightNo", "startStation", "terminalStation", "flightDate", "telNumber", "appointCount"];
+            $cookieRes = $this->getCodeStrAndCookie();
             foreach ($data['userName'] as $key => $value) {
+		        $code  = $cookieRes[0];
+		        $cookie = $cookieRes[1];
             	if(!empty($data['id'][$key])){
             		$info = Plan::find($data['id'][$key]);
             	}else{
@@ -49,6 +71,8 @@ class AirController extends Controller
                 foreach ($keys as $v) {
                     $info->{$v} = $data[$v][$key];
                 }
+                $info->cookie = $cookie;
+                $info->code = $code;
                 $res = $info->save();
                 if (!$res) {
                     throw new \Exception('创建失败');
@@ -121,7 +145,8 @@ class AirController extends Controller
                     'flightDate' => $flightDate,
                     'telNumber' => $telNumber,
                     'appointCount' => $appointCount,
-                    'validateCode' => $codeStr,
+                    // 'validateCode' => $codeStr,
+                    'validateCode' => $value->code,
                 ];
 
                 $bodys = '';
@@ -131,7 +156,7 @@ class AirController extends Controller
                 $bodys = ltrim($bodys, '&');
                 info('请求参数:'. print_r($data, true));
                 info('请求body:'. $bodys);
-                $res = $this->post($this->addUrl, [], $bodys);
+                $res = $this->post($this->addUrl, [], $bodys, ["Cookie:" . $value->cookie]);
 
                 info('请求结果:'. print_r($res, true));
                 switch ($res['result']['success']){
@@ -222,7 +247,7 @@ class AirController extends Controller
 	    array_push($headers, "Content-Type".":"."application/x-www-form-urlencoded; charset=UTF-8");
 	    $querys = "";
 
-	    array_push($headers, "Cookie:" . rtrim($this->cookie));
+	    // array_push($headers, "Cookie:" . rtrim($this->cookie));
 	    $curl = curl_init();
 	    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
 	    curl_setopt($curl, CURLOPT_URL, $url);
