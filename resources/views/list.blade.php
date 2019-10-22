@@ -7,6 +7,7 @@
             <table class="layui-table">
                 <thead>
                 <tr>
+                    <th>ID</th>
                     <th>姓名</th>
                     <th>身份证</th>
                     <th>航班公司</th>
@@ -26,7 +27,7 @@
                 @if(!empty($list))
                     @foreach($list as $value)
                         <tr>
-
+                            <td>{{ $value->id }}</td>
                             <td>{{ $value->userName }}</td>
                             <td>{{ $value->idCard }}</td>
                             <td>{{ $value->airways }}</td>
@@ -61,7 +62,7 @@
                             </td>
                             <td>
                                 @if(empty($value->status))
-                                    <button data-id="{{ $value->id }}" id="LAY-component-form-setval" class="layui-btn layui-btn-xs">修改</button>
+                                    <button onclick="goModify(this)" data-id="{{ $value->id }}" class="modify" class="layui-btn layui-btn-xs">修改</button>
                                 @endif
                             </td>
                         </tr>
@@ -109,7 +110,7 @@
     <script>
         layui.use(['jquery'], function(){
             var $ = layui.$;        
-            layui.$('#LAY-component-form-setval').on('click', function(){
+            layui.$('.modify').on('click', function(){
                 var id = $(this).attr('data-id')
                 window.location.href = '/add/' + id
             });
