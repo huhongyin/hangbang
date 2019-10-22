@@ -12,111 +12,67 @@
                     <div class="layui-tab-item layui-show">
                         <form class="layui-form" action="">
                             <input type="hidden" value="{{ csrf_token() }}" name="_token">
-                            <div class="layui-form-item">
-                                <div class="layui-input-block">
-                                    <input type="text" name="userName" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                            <div id="copyDiv">
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <input type="text" name="userName[]" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <input type="text" name="idCard[]" required  lay-verify="required" placeholder="请输入身份证" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <input type="text" name="airways[]" required  lay-verify="required" placeholder="请输入航班" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <input type="text" name="flightNo[]" required  lay-verify="required" placeholder="请输入航班号" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <input type="text" name="startStation[]" required  lay-verify="required" placeholder="请输入起始地" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <input type="text" name="terminalStation[]" required  lay-verify="required" placeholder="请输入目的地" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <input type="text" name="flightDate[]" required lay-filter="flightDate" lay-verify="required" placeholder="请选择日期" autocomplete="off" class="layui-input flightDate">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <input type="text" name="telNumber[]" required  lay-verify="required" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <input type="number" name="appointCount[]" value="2" required  lay-verify="required" placeholder="请输入预约数量" autocomplete="off" class="layui-input">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="layui-form-item">
-                                <div class="layui-input-block">
-                                    <input type="text" name="idCard" required  lay-verify="required" placeholder="请输入身份证" autocomplete="off" class="layui-input">
-                                </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <div class="layui-input-block">
-                                    <input type="text" name="airways" required  lay-verify="required" placeholder="请输入航班" autocomplete="off" class="layui-input">
-                                </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <div class="layui-input-block">
-                                    <input type="text" name="flightNo" required  lay-verify="required" placeholder="请输入航班号" autocomplete="off" class="layui-input">
-                                </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <div class="layui-input-block">
-                                    <input type="text" name="startStation" required  lay-verify="required" placeholder="请输入起始地" autocomplete="off" class="layui-input">
-                                </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <div class="layui-input-block">
-                                    <input type="text" name="terminalStation" required  lay-verify="required" placeholder="请输入目的地" autocomplete="off" class="layui-input">
-                                </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <div class="layui-input-block">
-                                    <input type="text" name="flightDate" id="flightDate" required  lay-verify="required" placeholder="请选择日期" autocomplete="off" class="layui-input">
-                                </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <div class="layui-input-block">
-                                    <input type="text" name="telNumber" required  lay-verify="required" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
-                                </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <div class="layui-input-block">
-                                    <input type="number" name="appointCount" value="1" required  lay-verify="required" placeholder="请输入预约数量" autocomplete="off" class="layui-input">
-                                </div>
+                            <div id="addContent">
+
                             </div>
                             <div class="layui-form-item">
                                 <div class="layui-input-block" style="text-align: center;">
                                     <button class="layui-btn" lay-submit lay-filter="levelForm" style="background-color: #d57d7d;">立即提交</button>
+                                    <button type="button" class="layui-btn" id="LAY-component-form-setval" style="float: left;" title="新增输入内容">
+                                        <i class="layui-icon">&#xe654;</i>
+                                    </button>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="layui-tab-item">
-                        {{--<form class="layui-form">--}}
-                            {{--<div class="layui-form-item">--}}
-                                {{--<div class="layui-input-block">--}}
-                                    {{--<input type="text" name="userName" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="layui-form-item">--}}
-                                {{--<div class="layui-input-block">--}}
-                                    {{--<input type="text" name="idCard" required  lay-verify="required" placeholder="请输入身份证" autocomplete="off" class="layui-input">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="layui-form-item">--}}
-                                {{--<div class="layui-input-block">--}}
-                                    {{--<input type="text" name="airways" required  lay-verify="required" placeholder="请输入航班" autocomplete="off" class="layui-input">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="layui-form-item">--}}
-                                {{--<div class="layui-input-block">--}}
-                                    {{--<input type="text" name="flightNo" required  lay-verify="required" placeholder="请输入航班号" autocomplete="off" class="layui-input">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="layui-form-item">--}}
-                                {{--<div class="layui-input-block">--}}
-                                    {{--<input type="text" name="startStation" required  lay-verify="required" placeholder="请输入起始地" autocomplete="off" class="layui-input">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="layui-form-item">--}}
-                                {{--<div class="layui-input-block">--}}
-                                    {{--<input type="text" name="terminalStation" required  lay-verify="required" placeholder="请输入目的地" autocomplete="off" class="layui-input">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="layui-form-item">--}}
-                                {{--<div class="layui-input-block">--}}
-                                    {{--<input type="text" name="flightDate" id="flightDate2" required  lay-verify="required" placeholder="请选择日期" autocomplete="off" class="layui-input">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="layui-form-item">--}}
-                                {{--<div class="layui-input-block">--}}
-                                    {{--<input type="text" name="telNumber" required  lay-verify="required" placeholder="请输入联系电话" autocomplete="off" class="layui-input">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="layui-form-item">--}}
-                                {{--<div class="layui-input-block">--}}
-                                    {{--<input type="number" name="appointCount" value="1" required  lay-verify="required" placeholder="请输入预约数量" autocomplete="off" class="layui-input">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="layui-form-item">--}}
-                                {{--<div class="layui-input-block" style="text-align: center;">--}}
-                                    {{--<button class="layui-btn" lay-submit lay-filter="arriForm" style="background-color: #d57d7d;">立即提交</button>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</form>--}}
                         <label>该功能暂未开放</label>
                     </div>
                 </div>
@@ -147,7 +103,7 @@
 
                 //执行一个laydate实例
                 laydate.render({
-                    elem: '#flightDate' //指定元素
+                    elem: '.flightDate' //指定元素
                     ,value: '{{ date('Y-m-d') }}'
                 });
 
@@ -183,6 +139,58 @@
                     console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
                     return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
                 });
+
+                layui.$('#LAY-component-form-setval').on('click', function(){
+                    var html = '<div class="layui-form-item">\n' +
+                        '                                    <div class="layui-input-block">\n' +
+                        '                                        <input type="text" name="userName[]" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">\n' +
+                        '                                    </div>\n' +
+                        '                                </div>\n' +
+                        '                                <div class="layui-form-item">\n' +
+                        '                                    <div class="layui-input-block">\n' +
+                        '                                        <input type="text" name="idCard[]" required  lay-verify="required" placeholder="请输入身份证" autocomplete="off" class="layui-input">\n' +
+                        '                                    </div>\n' +
+                        '                                </div>\n' +
+                        '                                <div class="layui-form-item">\n' +
+                        '                                    <div class="layui-input-block">\n' +
+                        '                                        <input type="text" name="airways[]" required  lay-verify="required" placeholder="请输入航班" autocomplete="off" class="layui-input">\n' +
+                        '                                    </div>\n' +
+                        '                                </div>\n' +
+                        '                                <div class="layui-form-item">\n' +
+                        '                                    <div class="layui-input-block">\n' +
+                        '                                        <input type="text" name="flightNo[]" required  lay-verify="required" placeholder="请输入航班号" autocomplete="off" class="layui-input">\n' +
+                        '                                    </div>\n' +
+                        '                                </div>\n' +
+                        '                                <div class="layui-form-item">\n' +
+                        '                                    <div class="layui-input-block">\n' +
+                        '                                        <input type="text" name="startStation[]" required  lay-verify="required" placeholder="请输入起始地" autocomplete="off" class="layui-input">\n' +
+                        '                                    </div>\n' +
+                        '                                </div>\n' +
+                        '                                <div class="layui-form-item">\n' +
+                        '                                    <div class="layui-input-block">\n' +
+                        '                                        <input type="text" name="terminalStation[]" required  lay-verify="required" placeholder="请输入目的地" autocomplete="off" class="layui-input">\n' +
+                        '                                    </div>\n' +
+                        '                                </div>\n' +
+                        '                                <div class="layui-form-item">\n' +
+                        '                                    <div class="layui-input-block">\n' +
+                        '                                        <input type="text" name="flightDate[]" required lay-filter="flightDate" lay-verify="required" placeholder="请选择日期" autocomplete="off" class="layui-input flightDate">\n' +
+                        '                                    </div>\n' +
+                        '                                </div>\n' +
+                        '                                <div class="layui-form-item">\n' +
+                        '                                    <div class="layui-input-block">\n' +
+                        '                                        <input type="text" name="telNumber[]" required  lay-verify="required" placeholder="请输入联系电话" autocomplete="off" class="layui-input">\n' +
+                        '                                    </div>\n' +
+                        '                                </div>\n' +
+                        '                                <div class="layui-form-item">\n' +
+                        '                                    <div class="layui-input-block">\n' +
+                        '                                        <input type="number" name="appointCount[]" value="2" required  lay-verify="required" placeholder="请输入预约数量" autocomplete="off" class="layui-input">\n' +
+                        '                                    </div>\n' +
+                        '                                </div>';
+                    $('#addContent').append('<hr class="layui-bg-blue">' + html)
+
+                    form.render()
+                });
             });
+
         </script>
     @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Plan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AirController extends Controller
 {
@@ -29,14 +30,30 @@ class AirController extends Controller
 
 	public function doAdd(Request $request)
     {
-        $data = $request->all();
-        unset($data['_token']);
+        try {
+            DB::beginTransaction();
 
-        $res = Plan::create($data);
-        if(!$res)
-            return ['code' => 0, 'msg' => '创建失败'];
+            $data = $request->all();
+            unset($data['_token']);
+            $keys = ["userName", "idCard", "airways", "flightNo", "startStation", "terminalStation", "flightDate", "telNumber", "appointCount"];
+            foreach ($data['userName'] as $key => $value) {
+                $info = new Plan();
+                $info->userName = $value;
+                foreach ($keys as $v) {
+                    $info->{$v} = $data[$v][$key];
+                }
+                $res = $info->save();
+                if (!$res) {
+                    throw new \Exception('创建失败');
+                }
+            }
 
-        return ['code' => 1, 'msg' => '创建成功'];
+            DB::commit();
+            return ['code' => 1, 'msg' => '创建成功'];
+        }catch (\Exception $exception){
+            DB::rollBack();
+            return ['code' => 0, 'msg' => $exception->getMessage()];
+        }
     }
 
 	public function index()

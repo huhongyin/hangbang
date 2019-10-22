@@ -17,6 +17,8 @@
                     <th>联系电话</th>
                     <th>预约数量</th>
                     <th>类型</th>
+                    <th>状态</th>
+                    <th>请求结果</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,6 +39,22 @@
                                     出发
                                 @else
                                     到达
+                                @endif
+                            </td>
+                            <td>
+                                @if($value->status == 1)
+                                        请求完成
+                                    @else
+                                        待请求
+                                @endif
+                            </td>
+                            <td>
+                                @if(!empty($value->result))
+                                    @foreach(json_decode($value->result, true)['result'] as $key => $value)
+                                        @if(!empty($value))
+                                            {{ @$key }}:{{ empty($value) ? '' : $value }}<br/>
+                                        @endif
+                                    @endforeach
                                 @endif
                             </td>
                         </tr>
