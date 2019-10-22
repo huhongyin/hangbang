@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Config;
 use App\Models\Plan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -58,20 +59,34 @@ class AirController extends Controller
 
 	public function index()
 	{
-//        $userName = $_GET['userName'] ?? '邓丽';
-//        $idCard = $_GET['idCard'] ?? '511028198610278522';
-//        $airways = $_GET['airways'] ?? '春秋航空';
-//        $flightNo = $_GET['flightNo'] ?? '8885';
-//        $startStation = $_GET['startStation'] ?? '上海到贵阳';
-//        $terminalStation = $_GET['terminalStation'] ?? '贵阳';
-//        $flightDate = $_GET['flightDate'] ?? date('Y-m-d');
-//        $telNumber = $_GET['telNumber'] ?? '13236565236';
-//        $appointCount = $_GET['appointCount'] ?? '1';
-	    $list = Plan::where('status', 0)->get();
+        $config = Config::first();
+        $startTime = strtotime($config->start_time);
 
-	    if(!empty($list)){
-	        info('请求数据有:' . print_r($list, true));
-	        foreach ($list as $value){
+        if($startTime > time()){
+            info('未到执行时间');
+            exit;
+        }
+
+        if($config->is_start == 0){
+            //未启动,启动任务
+            $config->is_start = 1;
+            $config->save();
+            $this->shell();
+        }else{
+            //判断是否有其他数据需要更新
+            if(Plan::where('status', 0)->count() > 0){
+                $this->shell();
+            }
+        }
+	}
+
+	public function shell()
+    {
+        $list = Plan::where('status', 0)->get();
+
+        if(!empty($list)){
+            info('请求数据有:' . print_r($list, true));
+            foreach ($list as $value){
                 $codeStr = $this->getCodeStr();
 
                 $userName = $value->userName;
@@ -109,28 +124,32 @@ class AirController extends Controller
                 info('请求结果:'. print_r($res, true));
                 switch ($res['result']['success']){
                     case 1:
-                            //预约成功,不继续请求
-                            $value->status = 1;
-                            $value->result = json_encode($res);
-                            $value->save();
-                    break;
+                        //预约成功,不继续请求
+                        $value->status = 1;
+                        $value->result = json_encode($res);
+                        $value->save();
+                        break;
                     default :
                         switch ($res['result']['msg']){
                             case '本次预约与上次购买时间过近，请留一些机会给其他旅客，谢谢':
                                 //已经预约过，不继续请求
-                                $value->status = 1;
-                                $value->result = json_encode($res);
-                                $value->save();
+                                    $value->status = 1;
+                                    $value->result = json_encode($res);
+                                    $value->save();
+                                break;
+                            default:
+                                    $config = Config::first();
+                                    $config->is_start = 0;
+                                    $config->save();
                                 break;
                         }
-                    break;
+                        break;
                 }
             }
         }else{
-	        info('查询出无数据');
+            info('查询出无数据');
         }
-
-	}
+    }
 
 	private function getCodeStr()
 	{
@@ -200,6 +219,11 @@ class AirController extends Controller
 	        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
 	    }
 	    curl_setopt($curl, CURLOPT_POSTFIELDS, $bodys);
+        // 在尝试连接时等待的秒数
+        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT , 30);
+        // 最大执行时间
+        curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+
 	    return json_decode(curl_exec($curl), true);
 	}
 
