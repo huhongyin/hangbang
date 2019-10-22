@@ -13,7 +13,7 @@ class AirController extends Controller
 	private $indexUrl = 'http://www.gzairports.com:11111/order/index.html';
 	private $codeUrl = 'http://www.gzairports.com:11111/order/creatImgCode';
 	private $airConfig = 'http://www.gzairports.com:11111/searchAppointmentSettings.action';
-	private $addUrl = 'http://www.gzairports.com:11111/apartPassengerAppointment.action';
+	private $addUrl = 'http://www.gzairports.com:11111/departPassengerAppointment.action';
 	private $ocrUrl = 'http://apigateway.jianjiaoshuju.com/api/v_1/yzm.html';
 	private $cookie = '';
 
