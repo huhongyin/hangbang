@@ -137,6 +137,11 @@ class AirController extends Controller
                                     $value->result = json_encode($res);
                                     $value->save();
                                 break;
+                            case '非常抱歉，该航班本次额度已预约满，欢迎您下次光临':
+                                    $value->status = 1;
+                                    $value->result = json_encode($res);
+                                    $value->save();
+                                break;
                             default:
                                     $config = Config::first();
                                     $config->is_start = 0;
