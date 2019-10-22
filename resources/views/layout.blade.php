@@ -67,11 +67,13 @@
         @yield('css')
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                <li class="layui-nav-item"><a href="/list">预约列表</a></li>
-                <li class="layui-nav-item"><a href="/add">添加预约</a></li>
-            </ul>
+        <div class="flex-center position-ref full-height air-con">
+            <div class="nav-bar">
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <li class="layui-nav-item"><a href="/list">预约列表</a></li>
+                    <li class="layui-nav-item"><a href="/add">添加预约</a></li>
+                </ul>
+            </div>
             <div class="content">
                 @yield('content')
             </div>
@@ -83,7 +85,7 @@
         }
         .content{
             height:100%;
-            width: 75%;
+            width: 100%;
             /*margin: 0 auto;*/
             /*padding: 1rem;*/
             text-align: unset;
@@ -91,16 +93,45 @@
 
         .layui-nav-tree{
             height: 100%;
-            width: 25%;
+            width: 100%;
+        }
+
+        .nav-bar{
+            width: 100%;
+            height: 100%;
+        }
+
+        .air-con{
+            display: grid;
+            grid-template-columns: 20% 80%;
         }
 
         @media only screen and (min-width: 320px) and (max-width: 479px){
             .layui-nav-tree{
                 width: 0;
             }
+            .air-con{
+                display: grid;
+                grid-template-columns: 100%;
+            }
+
+            .nav-bar{
+                display: none;
+                width: 0%;
+                height: 0%;
+            }
         }
         @media only screen and (min-width: 480px) and (max-width: 639px){
+            .air-con{
+                display: grid;
+                grid-template-columns: 100%;
+            }
 
+            .nav-bar{
+                display: none;
+                width: 0%;
+                height: 0%;
+            }
         }
         @media only screen and (min-width: 640px) and (max-width: 749px){
 
@@ -108,8 +139,15 @@
         @media only screen and (min-width: 750px) and (max-width: 959px){
         }
         @media only screen and (min-width: 960px) and (max-width: 1241px){
-            .layui-nav-tree{
-                width: 200px;
+            .air-con{
+                display: grid;
+                grid-template-columns: 15% 85%;
+            }
+
+            .nav-bar{
+                display: block;
+                width: 100%;
+                height: 100%;
             }
 
             .content{
@@ -117,8 +155,15 @@
             }
         }
         @media only screen and (min-width: 1242px){
-            .layui-nav-tree{
-                width: 200px;
+            .air-con{
+                display: grid;
+                grid-template-columns: 15% 85%;
+            }
+
+            .nav-bar{
+                display: block;
+                width: 100%;
+                height: 100%;
             }
 
             .content{

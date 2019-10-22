@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('/test', 'Web\AirController@index');
 
-Route::get('/add', 'Web\AirController@add');
+Route::get('/add/{id?}', 'Web\AirController@add');
 
 Route::get('/list', 'Web\AirController@getList');
 

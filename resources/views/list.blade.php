@@ -19,12 +19,14 @@
                     <th>类型</th>
                     <th>状态</th>
                     <th>请求结果</th>
+                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
                 @if(!empty($list))
                     @foreach($list as $value)
                         <tr>
+
                             <td>{{ $value->userName }}</td>
                             <td>{{ $value->idCard }}</td>
                             <td>{{ $value->airways }}</td>
@@ -50,11 +52,16 @@
                             </td>
                             <td>
                                 @if(!empty($value->result))
-                                    @foreach(json_decode($value->result, true)['result'] as $key => $value)
-                                        @if(!empty($value))
-                                            {{ @$key }}:{{ empty($value) ? '' : $value }}<br/>
+                                    @foreach(json_decode($value->result, true)['result'] as $key => $v)
+                                        @if(!empty($v))
+                                            {{ @$key }}:{{ empty($v) ? '' : $v }}<br/>
                                         @endif
                                     @endforeach
+                                @endif
+                            </td>
+                            <td>
+                                @if(empty($value->status))
+                                    <button data-id="{{ $value->id }}" id="LAY-component-form-setval" class="layui-btn layui-btn-xs">修改</button>
                                 @endif
                             </td>
                         </tr>
@@ -62,11 +69,12 @@
                 @endif
                 </tbody>
             </table>
-            <div id="paginate"></div>
+            {{ $list->links() }}
         </div>
     </div>
 @endsection
 @section('css')
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
 
         @media only screen and (min-width: 320px) and (max-width: 479px){
@@ -99,14 +107,12 @@
 @endsection
 @section('js')
     <script>
-        layui.use('laypage', function(){
-            var laypage = layui.laypage;
-
-            //执行一个laypage实例
-            laypage.render({
-                elem: 'paginate' //注意，这里的 test1 是 ID，不用加 # 号
-                ,count: {{ $list->total() }} //数据总数，从服务端得到
+        layui.use(['jquery'], function(){
+            var $ = layui.$;        
+            layui.$('#LAY-component-form-setval').on('click', function(){
+                var id = $(this).attr('data-id')
+                window.location.href = '/add/' + id
             });
-        });
+        })
     </script>
 @endsection
