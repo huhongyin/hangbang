@@ -62,7 +62,7 @@
                             </td>
                             <td>
                                 @if(empty($value->status))
-                                    <button onclick="goModify(this)" data-id="{{ $value->id }}" class="modify" class="layui-btn layui-btn-xs">修改</button>
+                                    <button onclick="goModify(this)" data-id="{{ $value->id }}" class="layui-btn layui-btn-xs modify">修改</button>
                                 @endif
                             </td>
                         </tr>
