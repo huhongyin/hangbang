@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/test', 'Web\AirController@index');
 
 Route::get('/add', 'Web\AirController@add');
+
+Route::get('/list', 'Web\AirController@getList');
+
+Route::post('/doAdd', 'Web\AirController@doAdd');

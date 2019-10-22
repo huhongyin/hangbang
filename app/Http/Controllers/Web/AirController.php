@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Plan;
 use Illuminate\Http\Request;
 
 class AirController extends Controller
@@ -14,48 +15,104 @@ class AirController extends Controller
 	private $ocrUrl = 'http://apigateway.jianjiaoshuju.com/api/v_1/yzm.html';
 	private $cookie = '';
 
+	public function getList(Request $request)
+    {
+        $list = Plan::paginate(10);
+
+        return view('list', compact('list'));
+    }
+
 	public function add()
 	{
 		return view('air');
 	}
 
+	public function doAdd(Request $request)
+    {
+        $data = $request->all();
+        unset($data['_token']);
+
+        $res = Plan::create($data);
+        if(!$res)
+            return ['code' => 0, 'msg' => '创建失败'];
+
+        return ['code' => 1, 'msg' => '创建成功'];
+    }
+
 	public function index()
 	{
-		$codeStr = $this->getCodeStr();
+//        $userName = $_GET['userName'] ?? '邓丽';
+//        $idCard = $_GET['idCard'] ?? '511028198610278522';
+//        $airways = $_GET['airways'] ?? '春秋航空';
+//        $flightNo = $_GET['flightNo'] ?? '8885';
+//        $startStation = $_GET['startStation'] ?? '上海到贵阳';
+//        $terminalStation = $_GET['terminalStation'] ?? '贵阳';
+//        $flightDate = $_GET['flightDate'] ?? date('Y-m-d');
+//        $telNumber = $_GET['telNumber'] ?? '13236565236';
+//        $appointCount = $_GET['appointCount'] ?? '1';
+	    $list = Plan::where('status', 0)->get();
 
-		$userName = $_GET['userName'] ?? '邓丽';
-		$idCard = $_GET['idCard'] ?? '511028198610278522';
-		$airways = $_GET['airways'] ?? '春秋航空';
-		$flightNo = $_GET['flightNo'] ?? '8885';
-		$startStation = $_GET['startStation'] ?? '上海到贵阳';
-		$terminalStation = $_GET['terminalStation'] ?? '贵阳';
-		$flightDate = $_GET['flightDate'] ?? '2019-10-21';
-		$telNumber = $_GET['telNumber'] ?? '13236565236';
-		$appointCount = $_GET['appointCount'] ?? '1';
+	    if(!empty($list)){
+	        info('请求数据有:' . print_r($list, true));
+	        foreach ($list as $value){
+                $codeStr = $this->getCodeStr();
 
-		$data = [
-				'userName' => $userName,
-				'idCard' => $idCard,
-				'airways' => $airways,
-				'flightNo' => $flightNo,
-				'startStation' => $startStation,
-				'terminalStation' => $terminalStation,
-				'flightDate' => $flightDate,
-				'telNumber' => $telNumber,
-				'appointCount' => $appointCount,
-				'validateCode' => $codeStr,
-			];
+                $userName = $value->userName;
+                $idCard = $value->idCard;
+                $airways = $value->airways;
+                $flightNo = $value->flightNo;
+                $startStation = $value->startStation;
+                $terminalStation = $value->terminalStation;
+                $flightDate = $value->flightDate;
+                $telNumber = $value->telNumber;
+                $appointCount = $value->appointCount;
 
-		$bodys = '';
-		foreach ($data as $key => $value) {
-			$bodys .= '&' . $key . '=' . $value;
-		}
-		$bodys = ltrim($bodys, '&');
-		info('请求参数:'. print_r($data, true));
-		info('请求body:'. $bodys);
-		$res = $this->post($this->addUrl, [], $bodys);
-		
-		return $res['result'];
+                $data = [
+                    'userName' => $userName,
+                    'idCard' => $idCard,
+                    'airways' => $airways,
+                    'flightNo' => $flightNo,
+                    'startStation' => $startStation,
+                    'terminalStation' => $terminalStation,
+                    'flightDate' => $flightDate,
+                    'telNumber' => $telNumber,
+                    'appointCount' => $appointCount,
+                    'validateCode' => $codeStr,
+                ];
+
+                $bodys = '';
+                foreach ($data as $key => $v) {
+                    $bodys .= '&' . $key . '=' . $v;
+                }
+                $bodys = ltrim($bodys, '&');
+                info('请求参数:'. print_r($data, true));
+                info('请求body:'. $bodys);
+                $res = $this->post($this->addUrl, [], $bodys);
+
+                info('请求结果:'. print_r($res, true));
+                switch ($res['result']['success']){
+                    case 1:
+                            //预约成功,不继续请求
+                            $value->status = 1;
+                            $value->result = json_encode($res);
+                            $value->save();
+                    break;
+                    default :
+                        switch ($res['result']['msg']){
+                            case '本次预约与上次购买时间过近，请留一些机会给其他旅客，谢谢':
+                                //已经预约过，不继续请求
+                                $value->status = 1;
+                                $value->result = json_encode($res);
+                                $value->save();
+                                break;
+                        }
+                    break;
+                }
+            }
+        }else{
+	        info('查询出无数据');
+        }
+
 	}
 
 	private function getCodeStr()
