@@ -61,18 +61,22 @@ class AirController extends Controller
 	{
         $config = Config::first();
         $startTime = strtotime($config->start_time);
-
+		info('配置文件:'.print_r($config, true));
+		info('当前时间:'. date('Y-m-d H:i:s', time()));
         if($startTime > time()){
             info('未到执行时间');
             exit;
         }
 
+		info('达到执行时间');
         if($config->is_start == 0){
+        	info('启动任务');
             //未启动,启动任务
             $config->is_start = 1;
             $config->save();
             $this->shell();
         }else{
+        	info('更新其他');
             //判断是否有其他数据需要更新
             if(Plan::where('status', 0)->count() > 0){
                 $this->shell();
