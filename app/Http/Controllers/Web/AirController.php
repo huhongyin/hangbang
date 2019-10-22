@@ -24,9 +24,11 @@ class AirController extends Controller
         return view('list', compact('list'));
     }
 
-	public function add()
+	public function add($id = 0)
 	{
-		return view('air');
+		$info = Plan::find($id);
+
+		return view('air', compact('info'));
 	}
 
 	public function doAdd(Request $request)
@@ -38,7 +40,11 @@ class AirController extends Controller
             unset($data['_token']);
             $keys = ["userName", "idCard", "airways", "flightNo", "startStation", "terminalStation", "flightDate", "telNumber", "appointCount"];
             foreach ($data['userName'] as $key => $value) {
-                $info = new Plan();
+            	if(!empty($data['id'][$key])){
+            		$info = Plan::find($data['id'][$key]);
+            	}else{
+	                $info = new Plan();
+	            }
                 $info->userName = $value;
                 foreach ($keys as $v) {
                     $info->{$v} = $data[$v][$key];

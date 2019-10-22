@@ -11,36 +11,37 @@
                 <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
                         <form class="layui-form" action="">
+                            <input type="hidden" name="id[]" value="{{ @$info->id }}">
                             <input type="hidden" value="{{ csrf_token() }}" name="_token">
                             <div id="copyDiv">
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <input type="text" name="userName[]" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                                        <input value="{{ @$info->userName }}" type="text" name="userName[]" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <input type="text" name="idCard[]" required  lay-verify="required" placeholder="请输入身份证" autocomplete="off" class="layui-input">
+                                        <input value="{{ @$info->idCard }}" type="text" name="idCard[]" required  lay-verify="required" placeholder="请输入身份证" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <input type="text" name="airways[]" required  lay-verify="required" placeholder="请输入航班" autocomplete="off" class="layui-input">
+                                        <input value="{{ @$info->airways }}" type="text" name="airways[]" required  lay-verify="required" placeholder="请输入航班" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <input type="text" name="flightNo[]" required  lay-verify="required" placeholder="请输入航班号" autocomplete="off" class="layui-input">
+                                        <input value="{{ @$info->flightNo }}" type="text" name="flightNo[]" required  lay-verify="required" placeholder="请输入航班号" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <input type="text" name="startStation[]" required  lay-verify="required" placeholder="请输入起始地" autocomplete="off" class="layui-input">
+                                        <input value="{{ @$info->startStation }}" type="text" name="startStation[]" required  lay-verify="required" placeholder="请输入起始地" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <input type="text" name="terminalStation[]" required  lay-verify="required" placeholder="请输入目的地" autocomplete="off" class="layui-input">
+                                        <input value="{{ @$info->terminalStation }}" type="text" name="terminalStation[]" required  lay-verify="required" placeholder="请输入目的地" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
@@ -50,12 +51,12 @@
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <input type="text" name="telNumber[]" required  lay-verify="required" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
+                                        <input value="{{ @$info->telNumber }}" type="text" name="telNumber[]" required  lay-verify="required" placeholder="请输入联系电话" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <input type="number" name="appointCount[]" value="2" required  lay-verify="required" placeholder="请输入预约数量" autocomplete="off" class="layui-input">
+                                        <input value="{{ @$info->appointCount }}" type="number" name="appointCount[]" value="2" required  lay-verify="required" placeholder="请输入预约数量" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                             </div>
@@ -65,9 +66,11 @@
                             <div class="layui-form-item">
                                 <div class="layui-input-block" style="text-align: center;">
                                     <button class="layui-btn" lay-submit lay-filter="levelForm" style="background-color: #d57d7d;">立即提交</button>
-                                    <button type="button" class="layui-btn" id="LAY-component-form-setval" style="float: left;" title="新增输入内容">
-                                        <i class="layui-icon">&#xe654;</i>
-                                    </button>
+                                    @if(!isset($info))
+                                        <button type="button" class="layui-btn" id="LAY-component-form-setval" style="float: left;" title="新增输入内容">
+                                            <i class="layui-icon">&#xe654;</i>
+                                        </button>
+                                    @endif
                                 </div>
                             </div>
                         </form>
@@ -104,7 +107,7 @@
                 //执行一个laydate实例
                 laydate.render({
                     elem: '.flightDate' //指定元素
-                    ,value: '{{ date('Y-m-d') }}'
+                    ,value: '{{ empty($info->flightDate) ? date('Y-m-d') : $info->flightDate }}'
                 });
 
                 laydate.render({
