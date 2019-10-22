@@ -47,7 +47,7 @@ class AirController extends Controller
 		$res = $this->getCode($imgBase64);
 
 		info('ocr结果:' . print_r($res, true));
-		return [ $res['v_code'], $cookie]
+		return [ $res['v_code'], $cookie];
 	}
 
 	public function doAdd(Request $request)
@@ -145,8 +145,8 @@ class AirController extends Controller
                     'flightDate' => $flightDate,
                     'telNumber' => $telNumber,
                     'appointCount' => $appointCount,
-                    // 'validateCode' => $codeStr,
-                    'validateCode' => $value->code,
+                    'validateCode' => $codeStr,
+                    // 'validateCode' => $value->code,
                 ];
 
                 $bodys = '';
@@ -247,7 +247,7 @@ class AirController extends Controller
 	    array_push($headers, "Content-Type".":"."application/x-www-form-urlencoded; charset=UTF-8");
 	    $querys = "";
 
-	    // array_push($headers, "Cookie:" . rtrim($this->cookie));
+	    array_push($headers, "Cookie:" . rtrim($this->cookie));
 	    $curl = curl_init();
 	    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
 	    curl_setopt($curl, CURLOPT_URL, $url);
