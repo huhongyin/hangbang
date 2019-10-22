@@ -156,7 +156,7 @@ class AirController extends Controller
                 $bodys = ltrim($bodys, '&');
                 info('请求参数:'. print_r($data, true));
                 info('请求body:'. $bodys);
-                $res = $this->post($this->addUrl, [], $bodys, ["Cookie:" . $value->cookie]);
+                $res = $this->post($this->addUrl, [], $bodys, ["Cookie:" . $this->cookie]);
 
                 info('请求结果:'. print_r($res, true));
                 switch ($res['result']['success']){
@@ -179,6 +179,11 @@ class AirController extends Controller
                                     $value->result = json_encode($res);
                                     $value->save();
                                 break;
+                            case '现在不在可预约时间段内，请在指定时间段预约':
+                                    $value->status = 1;
+                                    $value->result = json_encode($res);
+                                    $value->save();
+                            	break;
                             default:
                                     $config = Config::first();
                                     $config->is_start = 0;
