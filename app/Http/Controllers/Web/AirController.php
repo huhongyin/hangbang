@@ -117,6 +117,14 @@ class AirController extends Controller
         }
 	}
 
+	public function delete($id)
+    {
+        if(!Plan::find($id)->delete())
+            return ['code' => 0, 'msg' => '删除失败'];
+
+        return ['code' => 1, 'msg' => '删除成功'];
+    }
+
 	public function shell($date)
     {
         $list = Plan::where('status', 0)->where('flightDate', $date)->where('counts', '<', env('MAX_COUNT', 3))->get();

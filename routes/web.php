@@ -22,3 +22,5 @@ Route::get('/add/{id?}', 'Web\AirController@add');
 Route::get('/list', 'Web\AirController@getList');
 
 Route::post('/doAdd', 'Web\AirController@doAdd');
+
+Route::delete('/delete/{id}', 'Web\AirController@delete');

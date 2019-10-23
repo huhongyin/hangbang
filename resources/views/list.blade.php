@@ -64,7 +64,8 @@
                             </td>
                             <td>
                                 @if(empty($value->status))
-                                    <button onclick="goModify(this)" data-id="{{ $value->id }}" class="layui-btn layui-btn-xs modify">修改</button>
+                                    <button data-id="{{ $value->id }}" class="layui-btn layui-btn-xs modify">修改</button>
+                                    <button data-id="{{ $value->id }}" class="layui-btn layui-btn-danger layui-btn-xs delete">删除</button>
                                 @endif
                             </td>
                         </tr>
@@ -106,16 +107,37 @@
         @media only screen and (min-width: 1242px){
 
         }
+        .layui-btn+.layui-btn{
+            margin-left: 0px;
+        }
     </style>
 @endsection
 @section('js')
     <script>
-        layui.use(['jquery'], function(){
-            var $ = layui.$;        
+        layui.use(['jquery', 'layer'], function(){
+            var $ = layui.$;
+            var layer = layui.layer;
             layui.$('.modify').on('click', function(){
                 var id = $(this).attr('data-id')
                 window.location.href = '/add/' + id
             });
+
+            layui.$('.delete').on('click', function(){
+                $.ajax({
+                    url: '/delete/' + $(this).attr('data-id'),
+                    method: 'DELETE',
+                    dataType: 'json',
+                    data: { _token: '{{ csrf_token() }}' },
+                    success: function(res){
+                        if(res.code != 1){
+                            layer.msg(res.msg)
+                            return false
+                        }
+
+                        window.location.reload()
+                    }
+                })
+            })
         })
     </script>
 @endsection
