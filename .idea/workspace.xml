@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33ee36e0-b095-42b4-8e59-31818cfcce4c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/AirController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/AirController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/air.blade.php" afterPath="$PROJECT_DIR$/resources/views/air.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/list.blade.php" afterPath="$PROJECT_DIR$/resources/views/list.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="list.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="list.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/list.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+            <state relative-caret-position="46">
+              <caret line="14" column="26" lean-forward="false" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -43,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AirController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AirController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/AirController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="163" column="37" lean-forward="false" selection-start-line="163" selection-start-column="37" selection-end-line="163" selection-end-column="37" />
+            <state relative-caret-position="497">
+              <caret line="160" column="46" lean-forward="false" selection-start-line="160" selection-start-column="46" selection-end-line="160" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -63,24 +66,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="laravel-2019-10-22.log" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-10-22.log">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="layout.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/layout.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3082">
               <caret line="134" column="9" lean-forward="false" selection-start-line="134" selection-start-column="9" selection-end-line="134" selection-end-column="9" />
-              <folding>
-                <marker date="1571792573891" expanded="true" signature="4298:4401" ph="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -88,13 +79,10 @@
       <file leaf-file-name="Kernel.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Console/Kernel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
+            <state relative-caret-position="552">
               <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
               <folding>
                 <marker date="1571792573891" expanded="true" signature="604:613" ph="{...}" />
-                <marker date="1571792573891" expanded="true" signature="604:847" ph="{...}" />
-                <marker date="1571792573891" expanded="true" signature="622:705" ph=" Register the commands for the application. ..." />
-                <marker date="1571792573891" expanded="true" signature="741:845" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -113,19 +101,10 @@
       <file leaf-file-name="air.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/air.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4301">
-              <caret line="190" column="63" lean-forward="false" selection-start-line="190" selection-start-column="63" selection-end-line="190" selection-end-column="63" />
+            <state relative-caret-position="1132">
+              <caret line="76" column="19" lean-forward="false" selection-start-line="76" selection-start-column="19" selection-end-line="76" selection-end-column="19" />
               <folding>
-                <marker date="1571792573891" expanded="true" signature="6415:6437" ph="{&quot;elem&quot;: '.flightDate'...}" />
-                <marker date="1571792573891" expanded="true" signature="6415:12811" ph="{...}" />
-                <marker date="1571792573891" expanded="true" signature="6415:12831" ph="..." />
-                <marker date="1571792573891" expanded="true" signature="6472:6589" ph="{&quot;elem&quot;: '##flightDate2'...}" />
-                <marker date="1571792573891" expanded="true" signature="6652:7352" ph="{...}" />
-                <marker date="1571792573891" expanded="true" signature="6681:7273" ph="{&quot;type&quot;: 'POST'...}" />
-                <marker date="1571792573891" expanded="true" signature="6903:7251" ph="{...}" />
-                <marker date="1571792573891" expanded="true" signature="6950:7077" ph="{...}" />
-                <marker date="1571792573891" expanded="true" signature="7414:7759" ph="{...}" />
-                <marker date="1571792573891" expanded="true" signature="7839:12795" ph="{...}" />
+                <marker date="1571801987792" expanded="true" signature="5535:5557" ph="{&quot;elem&quot;: '.flightDate'...}" />
               </folding>
             </state>
           </provider>
@@ -142,6 +121,7 @@
       <find>]</find>
       <find>查询出无数据</find>
       <find>flightDate</find>
+      <find>addUrl</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -155,11 +135,11 @@
         <option value="$PROJECT_DIR$/resources/views/layout.blade.php" />
         <option value="$PROJECT_DIR$/app/Console/Kernel.php" />
         <option value="$PROJECT_DIR$/storage/logs/laravel-2019-10-22.log" />
-        <option value="$PROJECT_DIR$/resources/views/air.blade.php" />
         <option value="$PROJECT_DIR$/app/Models/Config.php" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Web/AirController.php" />
         <option value="$PROJECT_DIR$/resources/views/list.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/air.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Web/AirController.php" />
       </list>
     </option>
   </component>
@@ -193,6 +173,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -253,13 +235,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path" value="/usr/bin/node" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mcn-back-master" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -291,12 +272,13 @@
       <option name="presentableId" value="Default" />
       <updated>1571706278812</updated>
       <workItem from="1571706281240" duration="21960000" />
-      <workItem from="1571792508625" duration="634000" />
+      <workItem from="1571792508625" duration="1258000" />
+      <workItem from="1571800698825" duration="1488000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22594000" />
+    <option name="totallyTimeSpent" value="24706000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -311,7 +293,7 @@
     <frame x="0" y="0" width="1920" height="1030" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2524013" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25506938" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995495" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995495" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -319,7 +301,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19481982" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1936937" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -342,6 +324,90 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="23" column="46" lean-forward="false" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/AirController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3657">
+          <caret line="163" column="37" lean-forward="false" selection-start-line="163" selection-start-column="37" selection-end-line="163" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="28" lean-forward="false" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-10-22.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layout.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3082">
+          <caret line="134" column="9" lean-forward="false" selection-start-line="134" selection-start-column="9" selection-end-line="134" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Console/Kernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <marker date="1571792573891" expanded="true" signature="604:613" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/console.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="15" column="36" lean-forward="false" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/air.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4370">
+          <caret line="190" column="63" lean-forward="false" selection-start-line="190" selection-start-column="63" selection-end-line="190" selection-end-column="63" />
+          <folding>
+            <marker date="1571801987792" expanded="true" signature="5535:5557" ph="{&quot;elem&quot;: '.flightDate'...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/list.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -378,9 +444,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2369">
           <caret line="103" column="9" lean-forward="false" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
-          <folding>
-            <marker date="1571792573891" expanded="true" signature="4298:4401" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -390,9 +454,6 @@
           <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="5" />
           <folding>
             <marker date="1571792573891" expanded="true" signature="604:613" ph="{...}" />
-            <marker date="1571792573891" expanded="true" signature="604:847" ph="{...}" />
-            <marker date="1571792573891" expanded="true" signature="622:705" ph=" Register the commands for the application. ..." />
-            <marker date="1571792573891" expanded="true" signature="741:845" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -410,16 +471,7 @@
         <state relative-caret-position="4301">
           <caret line="187" column="63" lean-forward="false" selection-start-line="187" selection-start-column="63" selection-end-line="187" selection-end-column="63" />
           <folding>
-            <marker date="1571792573891" expanded="true" signature="6415:6437" ph="{&quot;elem&quot;: '.flightDate'...}" />
-            <marker date="1571792573891" expanded="true" signature="6415:12811" ph="{...}" />
-            <marker date="1571792573891" expanded="true" signature="6415:12831" ph="..." />
-            <marker date="1571792573891" expanded="true" signature="6472:6589" ph="{&quot;elem&quot;: '##flightDate2'...}" />
-            <marker date="1571792573891" expanded="true" signature="6652:7352" ph="{...}" />
-            <marker date="1571792573891" expanded="true" signature="6681:7273" ph="{&quot;type&quot;: 'POST'...}" />
-            <marker date="1571792573891" expanded="true" signature="6903:7251" ph="{...}" />
-            <marker date="1571792573891" expanded="true" signature="6950:7077" ph="{...}" />
-            <marker date="1571792573891" expanded="true" signature="7414:7759" ph="{...}" />
-            <marker date="1571792573891" expanded="true" signature="7839:12795" ph="{...}" />
+            <marker date="1571801987792" expanded="true" signature="5535:5557" ph="{&quot;elem&quot;: '.flightDate'...}" />
           </folding>
         </state>
       </provider>
@@ -447,16 +499,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layout.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3082">
-          <caret line="134" column="9" lean-forward="false" selection-start-line="134" selection-start-column="9" selection-end-line="134" selection-end-column="9" />
-          <folding>
-            <marker date="1571792573891" expanded="true" signature="4298:4401" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/layui/doc/Git仓库.url">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -469,25 +511,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/air.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4301">
-          <caret line="190" column="63" lean-forward="false" selection-start-line="190" selection-start-column="63" selection-end-line="190" selection-end-column="63" />
-          <folding>
-            <marker date="1571792573891" expanded="true" signature="6415:6437" ph="{&quot;elem&quot;: '.flightDate'...}" />
-            <marker date="1571792573891" expanded="true" signature="6415:12811" ph="{...}" />
-            <marker date="1571792573891" expanded="true" signature="6415:12831" ph="..." />
-            <marker date="1571792573891" expanded="true" signature="6472:6589" ph="{&quot;elem&quot;: '##flightDate2'...}" />
-            <marker date="1571792573891" expanded="true" signature="6652:7352" ph="{...}" />
-            <marker date="1571792573891" expanded="true" signature="6681:7273" ph="{&quot;type&quot;: 'POST'...}" />
-            <marker date="1571792573891" expanded="true" signature="6903:7251" ph="{...}" />
-            <marker date="1571792573891" expanded="true" signature="6950:7077" ph="{...}" />
-            <marker date="1571792573891" expanded="true" signature="7414:7759" ph="{...}" />
-            <marker date="1571792573891" expanded="true" signature="7839:12795" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -532,13 +555,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Console/Kernel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
+        <state relative-caret-position="552">
           <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
           <folding>
             <marker date="1571792573891" expanded="true" signature="604:613" ph="{...}" />
-            <marker date="1571792573891" expanded="true" signature="604:847" ph="{...}" />
-            <marker date="1571792573891" expanded="true" signature="622:705" ph=" Register the commands for the application. ..." />
-            <marker date="1571792573891" expanded="true" signature="741:845" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -551,18 +571,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/AirController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/list.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="163" column="37" lean-forward="false" selection-start-line="163" selection-start-column="37" selection-end-line="163" selection-end-column="37" />
+        <state relative-caret-position="46">
+          <caret line="14" column="26" lean-forward="false" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/list.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/layout.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+        <state relative-caret-position="3082">
+          <caret line="134" column="9" lean-forward="false" selection-start-line="134" selection-start-column="9" selection-end-line="134" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/air.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1132">
+          <caret line="76" column="19" lean-forward="false" selection-start-line="76" selection-start-column="19" selection-end-line="76" selection-end-column="19" />
+          <folding>
+            <marker date="1571801987792" expanded="true" signature="5535:5557" ph="{&quot;elem&quot;: '.flightDate'...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Web/AirController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="160" column="46" lean-forward="false" selection-start-line="160" selection-start-column="46" selection-end-line="160" selection-end-column="46" />
           <folding />
         </state>
       </provider>

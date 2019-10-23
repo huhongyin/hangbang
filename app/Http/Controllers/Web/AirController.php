@@ -13,7 +13,8 @@ class AirController extends Controller
 	private $indexUrl = 'http://www.gzairports.com:11111/order/index.html';
 	private $codeUrl = 'http://www.gzairports.com:11111/order/creatImgCode';
 	private $airConfig = 'http://www.gzairports.com:11111/searchAppointmentSettings.action';
-	private $addUrl = 'http://www.gzairports.com:11111/departPassengerAppointment.action';
+    private $addUrl = 'http://www.gzairports.com:11111/departPassengerAppointment.action';
+    private $arriveUrl = 'http://www.gzairports.com:11111/apartPassengerAppointment.action';
 	private $ocrUrl = 'http://apigateway.jianjiaoshuju.com/api/v_1/yzm.html';
 	private $cookie = '';
 
@@ -57,11 +58,11 @@ class AirController extends Controller
 
             $data = $request->all();
             unset($data['_token']);
-            $keys = ["userName", "idCard", "airways", "flightNo", "startStation", "terminalStation", "flightDate", "telNumber", "appointCount"];
-            $cookieRes = $this->getCodeStrAndCookie();
+            $keys = ["type", "userName", "idCard", "airways", "flightNo", "startStation", "terminalStation", "flightDate", "telNumber", "appointCount"];
+//            $cookieRes = $this->getCodeStrAndCookie();
             foreach ($data['userName'] as $key => $value) {
-		        $code  = $cookieRes[0];
-		        $cookie = $cookieRes[1];
+//		        $code  = $cookieRes[0];
+//		        $cookie = $cookieRes[1];
             	if(!empty($data['id'][$key])){
             		$info = Plan::find($data['id'][$key]);
             	}else{
@@ -71,8 +72,8 @@ class AirController extends Controller
                 foreach ($keys as $v) {
                     $info->{$v} = $data[$v][$key];
                 }
-                $info->cookie = $cookie;
-                $info->code = $code;
+//                $info->cookie = $cookie;
+//                $info->code = $code;
                 $res = $info->save();
                 if (!$res) {
                     throw new \Exception('创建失败');
@@ -156,7 +157,8 @@ class AirController extends Controller
                 $bodys = ltrim($bodys, '&');
                 info('请求参数:'. print_r($data, true));
                 info('请求body:'. $bodys);
-                $res = $this->post($this->addUrl, [], $bodys, ["Cookie:" . $this->cookie]);
+                $requestUrl = ($value->type == 1) ? $this->addUrl : $this->arriveUrl;
+                $res = $this->post($requestUrl, [], $bodys, ["Cookie:" . $this->cookie]);
 
                 info('请求结果:'. print_r($res, true));
                 $value->increment('counts');
