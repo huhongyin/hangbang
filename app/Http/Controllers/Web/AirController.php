@@ -110,7 +110,7 @@ class AirController extends Controller
         }else{
         	info('更新其他');
             //判断是否有其他数据需要更新
-            if(Plan::where('status', 0)->where('flightDate', $date)->count() > 0){
+            if(Plan::where('status', 0)->where('flightDate', $date)->where('counts', '<', env('MAX_COUNT', 3))->count() > 0){
                 $this->shell($date);
             }
         }
@@ -118,7 +118,7 @@ class AirController extends Controller
 
 	public function shell($date)
     {
-        $list = Plan::where('status', 0)->where('flightDate', $date)->get();
+        $list = Plan::where('status', 0)->where('flightDate', $date)->where('counts', '<', env('MAX_COUNT', 3))->get();
 
         if(!empty($list)){
             info('请求数据有:' . print_r($list, true));
@@ -159,6 +159,8 @@ class AirController extends Controller
                 $res = $this->post($this->addUrl, [], $bodys, ["Cookie:" . $this->cookie]);
 
                 info('请求结果:'. print_r($res, true));
+                $value->increment('counts');
+//                Plan::find($value->id)->increment('counts');
                 switch ($res['result']['success']){
                     case 1:
                         //预约成功,不继续请求
