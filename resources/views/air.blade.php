@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <input value="{{ @$info->appointCount }}" type="number" name="appointCount[]" value="2" required  lay-verify="required" placeholder="请输入预约数量" autocomplete="off" class="layui-input">
+                                        <input value="{{ @$info->appointCount ?? 2 }}" type="number" name="appointCount[]" required  lay-verify="required" placeholder="请输入预约数量" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                             </div>
