@@ -19,6 +19,7 @@
                     <th>预约数量</th>
                     <th>类型</th>
                     <th>状态</th>
+                    <th>重试次数</th>
                     <th>请求结果</th>
                     <th>操作</th>
                 </tr>
@@ -51,6 +52,7 @@
                                         待请求
                                 @endif
                             </td>
+                            <td>{{ $value->counts }}</td>
                             <td>
                                 @if(!empty($value->result))
                                     @foreach(json_decode($value->result, true)['result'] as $key => $v)
