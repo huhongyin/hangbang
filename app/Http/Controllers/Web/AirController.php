@@ -17,6 +17,7 @@ class AirController extends Controller
     private $arriveUrl = 'http://www.gzairports.com:11111/apartPassengerAppointment.action';
 	private $ocrUrl = 'http://apigateway.jianjiaoshuju.com/api/v_1/yzm.html';
 	private $cookie = '';
+	private $lockFilePath = '/www/wwwroot/hangbang/storage/app/public/air_lock';
 
 	public function getList(Request $request)
     {
@@ -97,6 +98,8 @@ class AirController extends Controller
 		info('配置文件:'.print_r($config, true));
 		info('当前时间:'. date('Y-m-d H:i:s', time()));
         if($startTime > time()){
+    		$out = system("rm -rf " . $this->lockFilePath, $res);
+	    	info('删除文件锁111:' . print_r($res, true));
             info('未到执行时间');
             exit;
         }
@@ -115,6 +118,10 @@ class AirController extends Controller
                 $this->shell($date);
             }
         }
+        
+    	$out = system("rm -rf " . $this->lockFilePath, $res);
+    	
+    	info('删除文件锁222:' . print_r($res, true));
 	}
 
 	public function delete($id)
@@ -133,7 +140,10 @@ class AirController extends Controller
             info('请求数据有:' . print_r($list, true));
             foreach ($list as $value){
                 $codeStr = $this->getCodeStr();
-
+				if(!$codeStr){
+					info($value->userName . 'OCR失败');
+					continue;
+				}
                 $userName = $value->userName;
                 $idCard = $value->idCard;
                 $airways = $value->airways;
@@ -205,7 +215,11 @@ class AirController extends Controller
                         break;
                 }
             }
+    		$out = system("rm -rf " . $this->lockFilePath, $res);
+	    	info('删除文件锁333:' . print_r($res, true));
         }else{
+    		$out = system("rm -rf " . $this->lockFilePath, $res);
+	    	info('删除文件锁333:' . print_r($res, true));
             info('查询出无数据');
         }
     }
@@ -227,6 +241,9 @@ class AirController extends Controller
 		$res = $this->getCode($imgBase64);
 
 		info('ocr结果:' . print_r($res, true));
+		if($res['errCode']){
+			return false;
+		}
 		return $res['v_code'];
 	}
 
